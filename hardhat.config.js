@@ -1,12 +1,15 @@
 require("@nomiclabs/hardhat-ethers");
 
 module.exports = {
-   solidity: "0.8.11",
-   networks: {
-      hardhat: {
-         chainId: 1337, // Replace with the desired chain ID
-      }
-   },
+  solidity: "0.8.11",
+  networks: {
+    hardhat: {
+      chainId: 1337, // Replace with the desired chain ID
+    },
+    localhost: {
+      url: "http://localhost:8545", // Update with the correct URL for your local Hardhat node
+    },
+  },
 };
 
 
