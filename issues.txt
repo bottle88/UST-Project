@@ -1,0 +1,25 @@
+Contract : 
+
+Functions regardings files yet to be completed
+
+Server : 
+
+How to account for 'msg.sender' in Contract while calling an API , if we are using local hardhat blockchain 
+
+
+Should Services like chainlink ??
+
+Errors : 
+
+1. could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2): 
+
+When , 
+
+POST : http://localhost:3000/add-patient
+{
+    "name": "aniketh",
+    "age": 20
+}
+
+2. If we deploy it on any test net , it is taken too much of tokens to deploy 
+And also the gas fees is too high , when calling a contract
