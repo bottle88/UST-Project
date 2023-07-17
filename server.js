@@ -19,11 +19,18 @@ app.use(express.json());
 
 const port = 3000;
 
+const testData = {
+  firstName: 'Homer',
+  lastName: 'Simpson'
+}
+app.get('/', (req, res) => res.send(testData))
+
+
 // Add Patient
 app.post('/add-patient', async (req, res) => {
   try {
-    const { name, age } = req.body;
-    const tx = await contractInstance.addPatient(name, age);
+    const { name , age} = req.body;
+    const tx = await contractInstance.addPatient(name ,age);
     const receipt = await tx.wait();
     const patientAddress = receipt.events[0].args.id;
     res.send({ success: true, patientAddress });
@@ -44,7 +51,6 @@ app.post('/add-doctor', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
-
 
 
 // Give Access
@@ -84,7 +90,7 @@ app.post('/remove-doctor', async (req, res) => {
 });
 
 // Get Patient Data
-app.post('/get-patient-data', async (req, res) => {
+app.get('/get-patient-data', async (req, res) => {
   try {
     const { patient_id } = req.body;
     const data = await contractInstance.getPatientData(patient_id);
@@ -96,7 +102,7 @@ app.post('/get-patient-data', async (req, res) => {
 });
 
 // Get Doctor Data
-app.post('/get-doctor-data', async (req, res) => {
+app.get('/get-doctor-data', async (req, res) => {
   try {
     const { doctor_id } = req.body;
     const name = await contractInstance.getDoctorData(doctor_id);
