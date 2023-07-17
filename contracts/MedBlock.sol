@@ -70,6 +70,9 @@ contract MedBlock {
         _;
     }
 
+    // Pass as {"doctor_id", 1 } - For ReadOnly in Remix IDE
+    // Pass as {"doctor_id", 2 } - For ReadWrite in Remix IDE
+
     function giveAccess(address doctor_id, AccessLevel accessLevel) validPatient(msg.sender) validDoctor(doctor_id) external {
         require(accessLevel == AccessLevel.ReadOnly || accessLevel == AccessLevel.ReadWrite, "Invalid access level");
 
@@ -78,6 +81,9 @@ contract MedBlock {
         patientMap[msg.sender].doctorsConnectedToaPatientList.push(doctor_id);
         doctorMap[doctor_id].patientsConnectedToaDoctorList.push(msg.sender);
     }
+
+    // Pass as {"doctor_id", 1 } - For ReadOnly in Remix IDE
+    // Pass as {"doctor_id", 2 } - For ReadWrite in Remix IDE
 
     function changeAccess(address doctor_id, AccessLevel accessLevel) external {
         require(patientToDoctor[msg.sender][doctor_id] == AccessLevel.ReadOnly || patientToDoctor[msg.sender][doctor_id] == AccessLevel.ReadWrite, "Cannot change access");
