@@ -2,6 +2,8 @@
 
 Commands : 
 
+    npm install
+
     npx hardhat run --network hardhat .\scripts\deploy.js
 
     npx hardhat node
